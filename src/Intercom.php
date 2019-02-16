@@ -140,8 +140,9 @@ class Intercom
     {
         $newData = [];
         foreach($data as $key => $value) {
-            if($value !== null || is_array($value) && count($value) > 0) {
-                $newData[$key] = $value;
+            $newData[$key] = $value;
+            if($value === null || (is_array($value) && count($value) === 0)) {
+                unset($newData[$key]);
             }
         }
 

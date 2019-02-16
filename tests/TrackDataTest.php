@@ -111,4 +111,27 @@ class TrackDataTest extends TestCase
         $intercom->create($subUser);
         $client->users->shouldHaveReceived('create')->once();
     }
+
+    /**
+     * @test
+     */
+    public function empty_custom_attributes_are_not_included()
+    {
+        $client = new IntercomClient();
+        $intercom = new Intercom($client, 'test');
+
+        $intercom->register(User::class, new UserDataMapper());
+        $user = new User('1234');
+
+        $user->setCustomAttributes([]);
+
+
+        $client->users->shouldReceive('create')->once()
+            ->with([
+                'user_id' => '1234'
+            ])
+        ;
+        
+        $intercom->create($user);
+    }
 }
