@@ -95,4 +95,20 @@ class TrackDataTest extends TestCase
         $client->users->shouldHaveReceived('update')->with($userData);
         $client->companies->shouldHaveReceived('update')->with($companyData);
     }
+
+    /**
+     * @test
+     */
+    public function it_resolves_mapper_for_subclasses()
+    {
+        $client = new IntercomClient();
+        $intercom = new Intercom($client);
+
+        $intercom->register(User::class, new UserDataMapper());
+
+        $subUser = new class('id_1234') extends User{};
+
+        $intercom->create($subUser);
+        $client->users->shouldHaveReceived('create')->once();
+    }
 }

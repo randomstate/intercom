@@ -60,7 +60,16 @@ class Intercom
      */
     protected function resolveMapper($trackable)
     {
-        $mapper = $this->map[$class = get_class($trackable)];
+        return $this->resolveMapperForClass(new \ReflectionClass($trackable));
+    }
+
+    protected function resolveMapperForClass(\ReflectionClass $class)
+    {
+        $mapper = $this->map[$class->getName()] ?? null;
+
+        if(!$mapper && $class->getParentClass()) {
+             return $this->resolveMapperForClass($class->getParentClass());
+        }
 
         if(!$mapper) {
             throw new \Exception("No intercom data mapper registered for class: " . $class);

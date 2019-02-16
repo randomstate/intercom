@@ -84,7 +84,7 @@ class User
      */
     public function getCompanies()
     {
-        return $this->companies;
+        return $this->companies ?? [];
     }
 
     /**
