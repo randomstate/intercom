@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Contingens\Intercom\Tests\fakes;
+namespace Contingens\Intercom\Fakes;
 
 use Intercom\IntercomCompanies;
 use Intercom\IntercomUsers;

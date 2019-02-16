@@ -7,7 +7,7 @@ namespace Contingens\Intercom\Tests;
 use Contingens\Intercom\Intercom;
 use Contingens\Intercom\Tests\fakes\Company;
 use Contingens\Intercom\Tests\fakes\CompanyDataMapper;
-use Contingens\Intercom\Tests\fakes\IntercomClient;
+use Contingens\Intercom\Fakes\IntercomClient;
 use Contingens\Intercom\Tests\fakes\User;
 use Contingens\Intercom\Tests\fakes\UserDataMapper;
 use Tests\TestCase;
