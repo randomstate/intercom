@@ -4,8 +4,6 @@
 namespace Contingens\Intercom;
 
 
-use Contingens\Intercom\Tests\fakes\CompanyDataMapper;
-use Contingens\Intercom\Tests\fakes\UserDataMapper;
 use Intercom\IntercomClient;
 
 class Intercom
