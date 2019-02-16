@@ -1,0 +1,24 @@
+{
+    "name": "contingens/intercom",
+    "description": "Intercom integration package for PHP, with great support for Laravel",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Connor Forsyth",
+            "email": "connor.forsyth@contingens.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+      "psr-4": {
+        "Contingens\\Intercom\\" : "src"
+      }
+    },
+    "autoload-dev": {
+      "classmap": [],
+      "psr-4": {
+        "Contingens\\Intercom\\Tests\\" : "tests"
+      }
+    }
+}
