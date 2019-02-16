@@ -15,16 +15,16 @@ class LaravelTest extends TestCase
      */
     public function it_can_resolve_an_intercom_client_from_the_container()
     {
-        config()->set('services.intercom.api_key', 'api_key');
-        config()->set('services.intercom.api_secret', 'secret');
+        config()->set('services.intercom.app_id', 'app_id');
+        config()->set('services.intercom.access_token', 'secret');
         config()->set('services.intercom.verification_token', 'token');
 
         $this->app->register(IntercomServiceProvider::class);
 
         /** @var Intercom $client */
         $client = $this->app->make(Intercom::class);
-        $this->assertEquals('api_key', $client->client()->appIdOrToken);
-        $this->assertEquals('secret', $client->client()->passwordPart);
+        $this->assertEquals('app_id', $client->appId());
+        $this->assertEquals('secret', $client->client()->appIdOrToken);
         $this->assertEquals('token', $client->verificationToken());
     }
 }

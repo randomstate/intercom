@@ -20,7 +20,7 @@ class TrackDataTest extends TestCase
     public function can_track_data_for_objects_that_have_a_mapping_class()
     {
         $client = new IntercomClient();
-        $intercom = new Intercom($client);
+        $intercom = new Intercom($client, 'test');
 
         $intercom->register(User::class, new UserDataMapper());
         $intercom->register(Company::class, new CompanyDataMapper());
@@ -102,7 +102,7 @@ class TrackDataTest extends TestCase
     public function it_resolves_mapper_for_subclasses()
     {
         $client = new IntercomClient();
-        $intercom = new Intercom($client);
+        $intercom = new Intercom($client, 'test');
 
         $intercom->register(User::class, new UserDataMapper());
 

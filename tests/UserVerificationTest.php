@@ -19,7 +19,7 @@ class UserVerificationTest extends TestCase
     {
         $user = new User('id_12345678');
 
-        $intercom = new Intercom(new IntercomClient(), 'JbxHK8gb0wnvtMUZ1HIZDxFH6Q3z0kbQBUEJcuDJ');
+        $intercom = new Intercom(new IntercomClient(), 'test', 'JbxHK8gb0wnvtMUZ1HIZDxFH6Q3z0kbQBUEJcuDJ');
         $intercom->register(User::class, new UserDataMapper());
 
         $hash = $intercom->generateVerificationHash($user);

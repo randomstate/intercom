@@ -14,14 +14,21 @@ class Intercom
      * @var IntercomClient
      */
     protected $intercomClient;
+
     /**
-     * @var null
+     * @var string | null
      */
     protected $verificationToken;
 
-    public function __construct($intercomClient, $verificationToken = null)
+    /**
+     * @var string
+     */
+    protected $appId;
+
+    public function __construct($intercomClient, $appId, $verificationToken = null)
     {
         $this->intercomClient = $intercomClient;
+        $this->appId = $appId;
         $this->verificationToken = $verificationToken;
     }
 
@@ -156,5 +163,10 @@ class Intercom
     public function verificationToken()
     {
         return $this->verificationToken;
+    }
+
+    public function appId()
+    {
+        return $this->appId;
     }
 }
