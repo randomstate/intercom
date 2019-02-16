@@ -6,15 +6,25 @@ namespace Contingens\Intercom;
 
 use Contingens\Intercom\Tests\fakes\CompanyDataMapper;
 use Contingens\Intercom\Tests\fakes\UserDataMapper;
+use Intercom\IntercomClient;
 
 class Intercom
 {
     protected $map = [];
-    protected $intercomClient;
 
-    public function __construct($intercomClient)
+    /**
+     * @var IntercomClient
+     */
+    protected $intercomClient;
+    /**
+     * @var null
+     */
+    protected $verificationToken;
+
+    public function __construct($intercomClient, $verificationToken = null)
     {
         $this->intercomClient = $intercomClient;
+        $this->verificationToken = $verificationToken;
     }
 
     public function client()
@@ -122,5 +132,17 @@ class Intercom
         }
 
         return $newData;
+    }
+
+    public function generateVerificationHash($user)
+    {
+        $mapper = $this->resolveMapper($user);
+        $id = $mapper->userId($user);
+
+        return hash_hmac(
+            'sha256',
+            $id,
+            $this->verificationToken
+        );
     }
 }
