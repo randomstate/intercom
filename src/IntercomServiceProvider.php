@@ -16,12 +16,12 @@ class IntercomServiceProvider extends ServiceProvider
                config('services.intercom.api_key'),
                config('services.intercom.api_secret')
            );
-        });
+        }, true);
 
         $this->app->bind(Intercom::class, function() {
             $client = $this->app->make(IntercomClient::class);
 
             return new Intercom($client, config('services.intercom.verification_token'));
-        });
+        }, true);
     }
 }
