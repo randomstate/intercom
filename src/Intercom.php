@@ -145,4 +145,9 @@ class Intercom
             $this->verificationToken
         );
     }
+
+    public function verificationToken()
+    {
+        return $this->verificationToken;
+    }
 }
